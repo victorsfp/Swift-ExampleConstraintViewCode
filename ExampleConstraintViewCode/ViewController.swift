@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     let viewAzul = UIView()
     let viewVermelha = UIView()
     let label = UILabel()
+    
+    let button = UIButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +36,14 @@ class ViewController: UIViewController {
         view.addSubview(viewVermelha)
         view.backgroundColor = .white
         
+        button.setTitle("Testing", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        viewVermelha.addSubview(button)
+        
+        button.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
+        
+        
+        
         NSLayoutConstraint.activate([
             viewAzul.topAnchor.constraint(equalTo: view.topAnchor),
             viewAzul.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -43,7 +53,10 @@ class ViewController: UIViewController {
             viewVermelha.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             viewVermelha.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             viewVermelha.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            viewVermelha.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            viewVermelha.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+            button.centerXAnchor.constraint(equalTo: viewVermelha.centerXAnchor),
+            button.centerYAnchor.constraint(equalTo: viewVermelha.centerYAnchor),
         ])
         
 //        let constraints = [
@@ -63,7 +76,10 @@ class ViewController: UIViewController {
         
         
     }
-
+    
+    @objc func buttonClicked(sender: UIButton) {
+        print("Apertou botão")
+    }
 
 }
 
